@@ -36,9 +36,10 @@ RUN apt-get update && apt-get -y install mysql-server-5.5 && \
     rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 ADD conf/mysql.conf /etc/supervisor/conf.d/   
 #---------------------------------------------------------------------------------
-RUN mkdir -p /install && cd /install && wget https://dl.dropboxusercontent.com/u/6229500/nolio_server_linux-x64_5_5_2_b191.sh
+RUN mkdir -p /install
 COPY install/install.sh /install/install.sh
 COPY install/mysql-connector-java-5.1.38-bin.jar /install/mysql-connector-java-5.1.38-bin.jar
+RUN cd /install && wget https://dl.dropboxusercontent.com/u/6229500/nolio_server_linux-x64_5_5_2_b191.sh
 RUN chmod +x /install/nolio_server_linux-x64_5_5_2_b191.sh && chmod +x /install/install.sh
 RUN /bin/bash -c "/usr/bin/mysqld_safe &" && \ 
     sleep 5 && \
