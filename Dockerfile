@@ -45,7 +45,7 @@ RUN /bin/bash -c "/usr/bin/mysqld_safe &" && \
     sleep 5 && \
     mysql -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');" && \
     cd /install && ./install.sh
-EXPOSE 8080
+EXPOSE 8080 6600 6900
 
 COPY install/dfg.sh /usr/local/bin/dfg.sh
 RUN  chmod +x /usr/local/bin/dfg.sh 
