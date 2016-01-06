@@ -50,3 +50,14 @@ EXPOSE 8080 6600 6900
 
 COPY install/dfg.sh /usr/local/bin/dfg.sh
 RUN  chmod +x /usr/local/bin/dfg.sh 
+# -------------------------------C9-----------------------------------------------    
+RUN apt-get update &&\
+    apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs
+RUN curl -sL https://deb.nodesource.com/setup | bash -
+RUN apt-get install -y nodejs
+RUN git clone https://github.com/c9/core.git /cloud9
+WORKDIR /cloud9
+RUN scripts/install-sdk.sh
+RUN sed -i -e 's_127.0.0.1_0.0.0.0_g' /cloud9/configs/standalone.js 
+ADD conf/cloud9.conf /etc/supervisor/conf.d/
+EXPOSE 80
