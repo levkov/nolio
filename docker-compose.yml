@@ -6,4 +6,5 @@ dev:
   - "9001:9001"    
   - "6900:6900"
   - "6600:6600"
+  ipv6: false
   hostname: nolio
