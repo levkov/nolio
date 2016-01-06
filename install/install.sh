@@ -3,7 +3,7 @@
 ./nolio_server_linux-x64_5_5_2_b191.sh << EOF
 o
 1
-/usr/local/ReleaseAutomationServer
+/opt/nolio
 1
 1
 1
