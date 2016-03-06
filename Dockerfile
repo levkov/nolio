@@ -40,13 +40,13 @@ RUN mkdir -p /install
 COPY install/install.sh /install/install.sh
 RUN cd /install && dos2unix *
 COPY install/mysql-connector-java-5.1.38-bin.jar /install/mysql-connector-java-5.1.38-bin.jar
-#RUN cd /install && wget https://dl.dropboxusercontent.com/u/6229500/nolio_server_linux-x64_6_0_0_b511.sh && \
-#    chmod +x /install/nolio_server_linux-x64_6_0_0_b511.sh && chmod +x /install/install.sh && \
-#    /bin/bash -c "/usr/bin/mysqld_safe &" && \ 
-#    sleep 5 && \
-#    mysql -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');" && \
-#    cd /install && ./install.sh && \
-#    rm -rf /install/install.sh && rm -rf /install/nolio_server_linux-x64_6_0_0_b511.sh
+RUN cd /install && wget https://dl.dropboxusercontent.com/u/6229500/nolio_server_linux-x64_6_0_0_b511.sh && \
+    chmod +x /install/nolio_server_linux-x64_6_0_0_b511.sh && chmod +x /install/install.sh && \
+    /bin/bash -c "/usr/bin/mysqld_safe &" && \ 
+    sleep 5 && \
+    mysql -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');" && \
+    cd /install && ./install.sh && \
+    rm -rf /install/install.sh && rm -rf /install/nolio_server_linux-x64_6_0_0_b511.sh
 EXPOSE 8080 6600 6900
 
 COPY install/dfg.sh /usr/local/bin/dfg.sh
