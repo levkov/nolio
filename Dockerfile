@@ -50,5 +50,5 @@ EXPOSE 8080 6600 6900
 
 COPY install/dfg.sh /usr/local/bin/dfg.sh
 RUN  chmod +x /usr/local/bin/dfg.sh 
-# -------------------------------C9-----------------------------------------------    
+  
 
