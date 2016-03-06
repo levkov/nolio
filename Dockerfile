@@ -32,12 +32,13 @@ RUN echo 'root:ContaineR' | chpasswd
 #    apt-get install oracle-java8-installer -y && \
 #    rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 #--------------------------------Servers------------------------------------------
-RUN apt-get update && apt-get -y install mysql-server-5.5 && \ 
+RUN apt-get update && apt-get -y install mysql-server-5.5 dos2unix && \ 
     rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
 ADD conf/mysql.conf /etc/supervisor/conf.d/   
 #---------------------------------------------------------------------------------
 RUN mkdir -p /install
 COPY install/install.sh /install/install.sh
+RUN cd /install && dos2unix *
 COPY install/mysql-connector-java-5.1.38-bin.jar /install/mysql-connector-java-5.1.38-bin.jar
 #RUN cd /install && wget https://dl.dropboxusercontent.com/u/6229500/nolio_server_linux-x64_6_0_0_b511.sh && \
 #    chmod +x /install/nolio_server_linux-x64_6_0_0_b511.sh && chmod +x /install/install.sh && \
