@@ -50,6 +50,7 @@ RUN cd /install && wget https://dl.dropboxusercontent.com/u/6229500/nolio_server
 EXPOSE 8080 6600 6900
 
 COPY install/dfg.sh /usr/local/bin/dfg.sh
+RUN /usr/local/bin && dos2unix dfg.sh
 RUN  chmod +x /usr/local/bin/dfg.sh 
   
 
