@@ -39,25 +39,16 @@ ADD conf/mysql.conf /etc/supervisor/conf.d/
 RUN mkdir -p /install
 COPY install/install.sh /install/install.sh
 COPY install/mysql-connector-java-5.1.38-bin.jar /install/mysql-connector-java-5.1.38-bin.jar
-RUN cd /install && wget https://dl.dropboxusercontent.com/u/6229500/nolio_server_linux-x64_5_5_2_b191.sh && \
-    chmod +x /install/nolio_server_linux-x64_5_5_2_b191.sh && chmod +x /install/install.sh && \
+RUN cd /install && wget https://dl.dropboxusercontent.com/u/6229500/nolio_server_linux-x64_6_0_0_b511.sh && \
+    chmod +x /install/nolio_server_linux-x64_6_0_0_b511.sh && chmod +x /install/install.sh && \
     /bin/bash -c "/usr/bin/mysqld_safe &" && \ 
     sleep 5 && \
     mysql -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');" && \
     cd /install && ./install.sh && \
-    rm -rf /install/install.sh && rm -rf /install/nolio_server_linux-x64_5_5_2_b191.sh
+    rm -rf /install/install.sh && rm -rf /install/nolio_server_linux-x64_6_0_0_b511.sh
 EXPOSE 8080 6600 6900
 
 COPY install/dfg.sh /usr/local/bin/dfg.sh
 RUN  chmod +x /usr/local/bin/dfg.sh 
 # -------------------------------C9-----------------------------------------------    
-RUN apt-get update &&\
-    apt-get install -y build-essential g++ curl libssl-dev apache2-utils git libxml2-dev sshfs
-RUN curl -sL https://deb.nodesource.com/setup | bash -
-RUN apt-get install -y nodejs
-RUN git clone https://github.com/c9/core.git /cloud9
-WORKDIR /cloud9
-RUN scripts/install-sdk.sh
-RUN sed -i -e 's_127.0.0.1_0.0.0.0_g' /cloud9/configs/standalone.js 
-ADD conf/cloud9.conf /etc/supervisor/conf.d/
-EXPOSE 80
+
