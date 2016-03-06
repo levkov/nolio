@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-./nolio_server_linux-x64_5_5_2_b191.sh << EOF
+./nolio_server_linux-x64_6_0_0_b511.sh << EOF
 o
 1
 /opt/nolio
